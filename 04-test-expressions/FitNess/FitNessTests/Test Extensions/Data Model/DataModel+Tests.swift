@@ -31,8 +31,18 @@
 /// THE SOFTWARE.
 
 import Foundation
+@testable import FitNess
 
-enum AppError: Error {
-  case goalNotSet
-  case invalidState
+extension DataModel {
+  func setToComplete() {
+    goal = 100
+    steps = 100
+    distance = 1
+  }
+
+  func setToCaught() {
+    goal = 1000
+    distance = 1
+    nessie.distance = 10
+  }
 }

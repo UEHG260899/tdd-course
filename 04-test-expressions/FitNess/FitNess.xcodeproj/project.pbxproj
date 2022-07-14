@@ -25,6 +25,8 @@
 		A4D49EF028807113005F2B61 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EEF28807113005F2B61 /* DataModelTests.swift */; };
 		A4D49EF4288085BD005F2B61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EF3288085BD005F2B61 /* ViewController.swift */; };
 		A4D49EF728808678005F2B61 /* RootViewController+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EF628808678005F2B61 /* RootViewController+Tests.swift */; };
+		A4D49EFA2880A788005F2B61 /* AppModel+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EF92880A788005F2B61 /* AppModel+Tests.swift */; };
+		A4D49EFC2880A7C0005F2B61 /* DataModel+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EFB2880A7C0005F2B61 /* DataModel+Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		A4D49EEF28807113005F2B61 /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
 		A4D49EF3288085BD005F2B61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A4D49EF628808678005F2B61 /* RootViewController+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootViewController+Tests.swift"; sourceTree = "<group>"; };
+		A4D49EF92880A788005F2B61 /* AppModel+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+Tests.swift"; sourceTree = "<group>"; };
+		A4D49EFB2880A7C0005F2B61 /* DataModel+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataModel+Tests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,9 +219,19 @@
 		A4D49EF528808659005F2B61 /* Test Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A4D49EF82880A777005F2B61 /* Data Model */,
 				A4D49EF628808678005F2B61 /* RootViewController+Tests.swift */,
 			);
 			path = "Test Extensions";
+			sourceTree = "<group>";
+		};
+		A4D49EF82880A777005F2B61 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4D49EFB2880A7C0005F2B61 /* DataModel+Tests.swift */,
+				A4D49EF92880A788005F2B61 /* AppModel+Tests.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +380,8 @@
 				4CCF440E27052F8000DD29AB /* StepCountControllerTests.swift in Sources */,
 				A4D49EF4288085BD005F2B61 /* ViewController.swift in Sources */,
 				4CCF440C2705284300DD29AB /* AppModelTests.swift in Sources */,
+				A4D49EFC2880A7C0005F2B61 /* DataModel+Tests.swift in Sources */,
+				A4D49EFA2880A788005F2B61 /* AppModel+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
