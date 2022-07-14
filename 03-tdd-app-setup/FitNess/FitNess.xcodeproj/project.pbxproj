@@ -17,7 +17,8 @@
 		4CBCDEB72701426800E8992C /* StepCountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCDEB62701426800E8992C /* StepCountController.swift */; };
 		4CBCDEBC270142DF00E8992C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCDEBB270142DF00E8992C /* AppState.swift */; };
 		4CBCDEBE270142EE00E8992C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCDEBD270142EE00E8992C /* AppModel.swift */; };
-		A4D49EDC28805A75005F2B61 /* FitNessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EDB28805A75005F2B61 /* FitNessTests.swift */; };
+		A4D49EE328805B66005F2B61 /* AppModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EE228805B66005F2B61 /* AppModelTests.swift */; };
+		A4D49EE5288061CE005F2B61 /* StepCounterControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49EE4288061CE005F2B61 /* StepCounterControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +45,8 @@
 		4CBCDEBB270142DF00E8992C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4CBCDEBD270142EE00E8992C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		A4D49ED928805A75005F2B61 /* FitNessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitNessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4D49EDB28805A75005F2B61 /* FitNessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitNessTests.swift; sourceTree = "<group>"; };
+		A4D49EE228805B66005F2B61 /* AppModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelTests.swift; sourceTree = "<group>"; };
+		A4D49EE4288061CE005F2B61 /* StepCounterControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +140,34 @@
 		A4D49EDA28805A75005F2B61 /* FitNessTests */ = {
 			isa = PBXGroup;
 			children = (
-				A4D49EDB28805A75005F2B61 /* FitNessTests.swift */,
+				A4D49EE62880622F005F2B61 /* Cases */,
 			);
 			path = FitNessTests;
+			sourceTree = "<group>";
+		};
+		A4D49EE62880622F005F2B61 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				A4D49EE72880624B005F2B61 /* App Model */,
+				A4D49EE828806252005F2B61 /* UI Layer */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		A4D49EE72880624B005F2B61 /* App Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4D49EE228805B66005F2B61 /* AppModelTests.swift */,
+			);
+			path = "App Model";
+			sourceTree = "<group>";
+		};
+		A4D49EE828806252005F2B61 /* UI Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A4D49EE4288061CE005F2B61 /* StepCounterControllerTests.swift */,
+			);
+			path = "UI Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +224,7 @@
 					};
 					A4D49ED828805A75005F2B61 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 						TestTargetID = 185CB1F723C78CE6009F7571;
 					};
 				};
@@ -280,7 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4D49EDC28805A75005F2B61 /* FitNessTests.swift in Sources */,
+				A4D49EE5288061CE005F2B61 /* StepCounterControllerTests.swift in Sources */,
+				A4D49EE328805B66005F2B61 /* AppModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,15 +490,22 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5P4JJDT7CR;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.FitNessTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitNess.app/FitNess";
@@ -481,11 +517,17 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5P4JJDT7CR;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.FitNessTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
