@@ -100,7 +100,7 @@ class StepCountController: UIViewController {
 // MARK: - Goal
 extension StepCountController {
   func updateGoal(newGoal: Int) {
-    // update this function
+    AppModel.instance.dataModel.goal = newGoal
   }
 
   private func showNeedGoalAlert() {
@@ -138,6 +138,6 @@ extension StepCountController {
 // MARK: - Chase View
 extension StepCountController {
   private func updateChaseView() {
-    // update this function
+    chaseView.state = AppModel.instance.appState
   }
 }
