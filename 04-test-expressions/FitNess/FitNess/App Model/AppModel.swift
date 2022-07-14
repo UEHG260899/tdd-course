@@ -48,6 +48,7 @@ class AppModel {
   }
   
   func restart() {
+    dataModel.goal = nil
     appState = .notStarted
   }
 }
