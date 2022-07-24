@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,23 +30,20 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+import XCTest
 
-class RootViewController: UIViewController {
-  @IBOutlet weak var alertHeight: NSLayoutConstraint!
-  @IBOutlet weak var alertContainer: UIView!
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    reset()
-    
-    AlertCenter.listenForAlerts { center in
-      self.alertContainer.isHidden = center.alertCount == 0
-    }
+class ButtonObserver {
+  var token: NSKeyValueObservation?
+  
+  func observe(_ button: UIButton, expectation: XCTestExpectation) {
+    token = button
+      .observe(\.titleLabel?.text, options: [.new]) { _, _ in
+        expectation.fulfill()
+      }
   }
-
-  // resets the view to the didLoad state
-  func reset() {
-    alertContainer.isHidden = true
+  
+  deinit {
+    token?.invalidate()
   }
 }
+

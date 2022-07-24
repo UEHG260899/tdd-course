@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,23 +30,12 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+import Foundation
+@testable import FitNess
 
-class RootViewController: UIViewController {
-  @IBOutlet weak var alertHeight: NSLayoutConstraint!
-  @IBOutlet weak var alertContainer: UIView!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    reset()
-    
-    AlertCenter.listenForAlerts { center in
-      self.alertContainer.isHidden = center.alertCount == 0
-    }
-  }
-
-  // resets the view to the didLoad state
-  func reset() {
-    alertContainer.isHidden = true
+extension Notification {
+  var alert: Alert? {
+    return userInfo?[AlertNotification.Keys.alert] as? Alert
   }
 }

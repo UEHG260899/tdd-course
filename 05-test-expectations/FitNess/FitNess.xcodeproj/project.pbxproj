@@ -32,6 +32,9 @@
 		4CCF441C270687DC00DD29AB /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF441B270687DC00DD29AB /* DataModelTests.swift */; };
 		4CF6A59B270A567F006F0292 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6A59A270A567F006F0292 /* ViewControllers.swift */; };
 		4CF6A59E270D02F1006F0292 /* RootViewController+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6A59D270D02F1006F0292 /* RootViewController+Tests.swift */; };
+		A4A5CFFE288DA49E00797641 /* ButtonObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5CFFD288DA49E00797641 /* ButtonObserver.swift */; };
+		A4A5D003288DB4B700797641 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5D002288DB4B700797641 /* RootViewControllerTests.swift */; };
+		A4A65B34288DC5CC00DF24C3 /* Notification+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A65B33288DC5CC00DF24C3 /* Notification+Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		4CCF441B270687DC00DD29AB /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
 		4CF6A59A270A567F006F0292 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		4CF6A59D270D02F1006F0292 /* RootViewController+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootViewController+Tests.swift"; sourceTree = "<group>"; };
+		A4A5CFFD288DA49E00797641 /* ButtonObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonObserver.swift; sourceTree = "<group>"; };
+		A4A5D002288DB4B700797641 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
+		A4A65B33288DC5CC00DF24C3 /* Notification+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Tests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,13 +208,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		4CBEFCA9270E6E4100EB190B /* App Layer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "App Layer";
-			sourceTree = "<group>";
-		};
 		4CCF44032705277700DD29AB /* FitNessTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +221,7 @@
 		4CCF440F27052F9C00DD29AB /* Cases */ = {
 			isa = PBXGroup;
 			children = (
-				4CBEFCA9270E6E4100EB190B /* App Layer */,
+				A4A5D001288DB4A500797641 /* App Layer */,
 				4CCF441027052FA500DD29AB /* App Model */,
 				4CCF44192706878200DD29AB /* Data Model */,
 				4CCF441127052FAC00DD29AB /* UI Layer */,
@@ -268,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF6A59A270A567F006F0292 /* ViewControllers.swift */,
+				A4A5CFFD288DA49E00797641 /* ButtonObserver.swift */,
 			);
 			path = "Test Classes";
 			sourceTree = "<group>";
@@ -275,10 +275,27 @@
 		4CF6A59C270D02DB006F0292 /* Test Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A4A65B32288DC5B400DF24C3 /* Alerts */,
 				4C566FB1270D1B5F00499DB9 /* App Layer */,
 				4C566FB2270D1B6A00499DB9 /* Data Model */,
 			);
 			path = "Test Extensions";
+			sourceTree = "<group>";
+		};
+		A4A5D001288DB4A500797641 /* App Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A4A5D002288DB4B700797641 /* RootViewControllerTests.swift */,
+			);
+			path = "App Layer";
+			sourceTree = "<group>";
+		};
+		A4A65B32288DC5B400DF24C3 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				A4A65B33288DC5CC00DF24C3 /* Notification+Tests.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,8 +448,11 @@
 				4CCF441C270687DC00DD29AB /* DataModelTests.swift in Sources */,
 				4CCF440E27052F8000DD29AB /* StepCountControllerTests.swift in Sources */,
 				4C566FB6270D1B9E00499DB9 /* AppModel+Tests.swift in Sources */,
+				A4A65B34288DC5CC00DF24C3 /* Notification+Tests.swift in Sources */,
 				4CBEFC98270D24EF00EB190B /* AlertCenterTests.swift in Sources */,
 				4CF6A59B270A567F006F0292 /* ViewControllers.swift in Sources */,
+				A4A5CFFE288DA49E00797641 /* ButtonObserver.swift in Sources */,
+				A4A5D003288DB4B700797641 /* RootViewControllerTests.swift in Sources */,
 				4CCF440C2705284300DD29AB /* AppModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
