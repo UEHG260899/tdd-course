@@ -48,6 +48,9 @@ class DataModel {
     }
     return false
   }
+  
+  // MARK: - Alerts
+  var sentAlerts = [Alert]()
 
   // MARK: - Nessie
   let nessie = Nessie()
@@ -63,27 +66,26 @@ class DataModel {
     steps = 0
     distance = 0
     nessie.distance = 0
+    sentAlerts.removeAll()
   }
   
+  
   func updateForSteps() {
-    guard let goal = goal else {
+    checkThreshold(percent: 0.25, alert: .milestone25Percent)
+    checkThreshold(percent: 0.5, alert: .milestone50Percent)
+    checkThreshold(percent: 0.75, alert: .milestone75Percent)
+    checkThreshold(percent: 1, alert: .goalComplete)
+  }
+  
+  private func checkThreshold(percent: Double, alert: Alert) {
+    guard !sentAlerts.contains(alert),
+          let goal = goal else {
       return
     }
     
-    if Double(steps) >= Double(goal) * 0.25 {
-      AlertCenter.instance.postAlert(alert: Alert.milestone25Percent)
-    }
-    
-    if Double(steps) >= Double(goal) * 0.5 {
-      AlertCenter.instance.postAlert(alert: Alert.milestone50Percent)
-    }
-    
-    if Double(steps) >= Double(goal) * 0.75 {
-      AlertCenter.instance.postAlert(alert: Alert.milestone75Percent)
-    }
-    
-    if Double(steps) >= Double(goal) {
-      AlertCenter.instance.postAlert(alert: Alert.goalComplete)
+    if Double(steps) >= Double(goal) * percent {
+      AlertCenter.instance.postAlert(alert: alert)
+      sentAlerts.append(alert)
     }
   }
 }

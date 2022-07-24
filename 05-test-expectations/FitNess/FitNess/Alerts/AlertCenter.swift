@@ -66,6 +66,12 @@ class AlertCenter {
     alertQueue.removeAll()
   }
   
+  func clear(alert: Alert) {
+    if let index = alertQueue.firstIndex(of: alert) {
+      alertQueue.remove(at: index)
+    }
+  }
+  
 }
 
 // MARK: - Class Helpers
