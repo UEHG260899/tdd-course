@@ -52,6 +52,11 @@
 		9581B4B52316F3D200A78286 /* LogoNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */; };
 		9581B4B72316F44400A78286 /* LogoNavigationItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */; };
 		9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B82316F48E00A78286 /* DecodableTestCase.swift */; };
+		A428D54E28BBE84900D06507 /* DogPatchClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428D54D28BBE84900D06507 /* DogPatchClientTests.swift */; };
+		A428D55128BBE89100D06507 /* DogPatchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428D55028BBE89100D06507 /* DogPatchClient.swift */; };
+		A428D55328BBEB6200D06507 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428D55228BBEB6200D06507 /* URLSessionProtocol.swift */; };
+		A428D55528BBEC0C00D06507 /* URLSessionProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428D55428BBEC0C00D06507 /* URLSessionProtocolTests.swift */; };
+		A428D55828BBF02100D06507 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428D55728BBF02100D06507 /* MockURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +119,11 @@
 		9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItem.swift; sourceTree = "<group>"; };
 		9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItemTests.swift; sourceTree = "<group>"; };
 		9581B4B82316F48E00A78286 /* DecodableTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableTestCase.swift; sourceTree = "<group>"; };
+		A428D54D28BBE84900D06507 /* DogPatchClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogPatchClientTests.swift; sourceTree = "<group>"; };
+		A428D55028BBE89100D06507 /* DogPatchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogPatchClient.swift; sourceTree = "<group>"; };
+		A428D55228BBEB6200D06507 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		A428D55428BBEC0C00D06507 /* URLSessionProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocolTests.swift; sourceTree = "<group>"; };
+		A428D55728BBF02100D06507 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +171,7 @@
 				4213CCC2221738E90047BA3D /* Controllers */,
 				427CCADB22BC653F00F92FF7 /* Extensions */,
 				4213CCC522173B3D0047BA3D /* Models */,
-				42463A6A270AC20F0057BA5E /* Networking */,
+				A428D54F28BBE87A00D06507 /* Networking */,
 				4213CCC4221738EF0047BA3D /* Resources */,
 				4270356F22B6F3E0001080B1 /* ViewModels */,
 				4213CCC3221738ED0047BA3D /* Views */,
@@ -247,27 +257,6 @@
 				42335BF722BD1D7A00E21A72 /* UITableViewCell+Identifier.swift */,
 			);
 			path = Identifiers;
-			sourceTree = "<group>";
-		};
-		423CB53A2718234F00375DE0 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		42463A6A270AC20F0057BA5E /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		42463A6D270AC2700057BA5E /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		424E577222E0C2D500C96D45 /* Protocols */ = {
@@ -408,7 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				424E578422E0D83400C96D45 /* Extensions */,
-				423CB53A2718234F00375DE0 /* Mocks */,
+				A428D55628BBF00600D06507 /* Mocks */,
 				424E577222E0C2D500C96D45 /* Protocols */,
 				427CCAFB22BC703900F92FF7 /* Views */,
 				424E577622E0C44900C96D45 /* XCTest Additions */,
@@ -463,7 +452,7 @@
 				42A1ECB322D742F1001404C8 /* Controllers */,
 				427CCADC22BC654A00F92FF7 /* Extensions */,
 				42D837BA22B6DA450036C5DD /* Models */,
-				42463A6D270AC2700057BA5E /* Networking */,
+				A428D54C28BBE82900D06507 /* Networking */,
 				424E577B22E0D0F600C96D45 /* ViewModels */,
 				42D837C522B6E4460036C5DD /* Views */,
 			);
@@ -485,6 +474,32 @@
 				427CCAD822BC64BF00F92FF7 /* Navigation */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A428D54C28BBE82900D06507 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A428D54D28BBE84900D06507 /* DogPatchClientTests.swift */,
+				A428D55428BBEC0C00D06507 /* URLSessionProtocolTests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A428D54F28BBE87A00D06507 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A428D55028BBE89100D06507 /* DogPatchClient.swift */,
+				A428D55228BBEB6200D06507 /* URLSessionProtocol.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A428D55628BBF00600D06507 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A428D55728BBF02100D06507 /* MockURLSession.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,6 +623,8 @@
 				42D837BE22B6DAD50036C5DD /* User.swift in Sources */,
 				42335BEF22BD166800E21A72 /* UIView+ApplyShadow.swift in Sources */,
 				9581B4B12316F35D00A78286 /* UIView+NibCreatable.swift in Sources */,
+				A428D55328BBEB6200D06507 /* URLSessionProtocol.swift in Sources */,
+				A428D55128BBE89100D06507 /* DogPatchClient.swift in Sources */,
 				42335BF822BD1D7A00E21A72 /* UITableViewCell+Identifier.swift in Sources */,
 				9581B4B22316F35D00A78286 /* NibCreatable.swift in Sources */,
 				4213CCA0221738DF0047BA3D /* AppDelegate.swift in Sources */,
@@ -630,12 +647,15 @@
 				42A255A522BD0E7600C744D9 /* UIViewController+StoryboardCreatableTests.swift in Sources */,
 				427CCB0822BC73AC00F92FF7 /* UIViewController+NibCreatableTests.swift in Sources */,
 				9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */,
+				A428D55828BBF02100D06507 /* MockURLSession.swift in Sources */,
 				4233782B270C662900852BD3 /* TestView.swift in Sources */,
 				424E577E22E0D10C00C96D45 /* DogViewModelTests.swift in Sources */,
 				4261B59A22D74CF500E5824D /* UITableViewCell+Identifier.swift in Sources */,
+				A428D55528BBEC0C00D06507 /* URLSessionProtocolTests.swift in Sources */,
 				424E578822E0D87200C96D45 /* TimeInterval+Calendar.swift in Sources */,
 				427CCB0622BC72C900F92FF7 /* UIView+NibCreatableTests.swift in Sources */,
 				427CCAFD22BC705600F92FF7 /* TestViewController.swift in Sources */,
+				A428D54E28BBE84900D06507 /* DogPatchClientTests.swift in Sources */,
 				420A276522E485C000ECCA13 /* Data+JSONFile.swift in Sources */,
 				4261B59C22D74D1700E5824D /* TestTableViewCell.swift in Sources */,
 				424E576D22E0C23700C96D45 /* UserTests.swift in Sources */,
