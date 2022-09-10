@@ -37,6 +37,7 @@ class ListingsViewControllerTests: XCTestCase {
   
   // MARK: - Instance Properties
   var sut: ListingsViewController!
+  var mockNetworkClient: MockDogPatchService!
   var partialMock: PartialMockListingsViewController {
     return sut as! PartialMockListingsViewController
   }
@@ -50,6 +51,7 @@ class ListingsViewControllerTests: XCTestCase {
   
   override func tearDown() {
     sut = nil
+    mockNetworkClient = nil
     super.tearDown()
   }
   
@@ -92,6 +94,11 @@ class ListingsViewControllerTests: XCTestCase {
     }
   }
   
+  func givenMockNetworkClient() {
+    mockNetworkClient = MockDogPatchService()
+    sut.networkClient = mockNetworkClient
+  }
+  
   // MARK: - When
   func whenDequeueTableViewCells() -> [UITableViewCell] {
     return (0 ..< sut.viewModels.count).map { i in
@@ -111,6 +118,10 @@ class ListingsViewControllerTests: XCTestCase {
   }
   
   // MARK: - Instance Properties - Tests
+  func test_netwrokClient_setsToDogPatchClient() {
+    XCTAssertTrue((sut.networkClient as? DogPatchClient) === DogPatchClient.shared)
+  }
+  
   func test_viewModels_setToEmptyArray() {
     XCTAssertEqual(sut.viewModels.count, 0)
   }
@@ -165,6 +176,103 @@ class ListingsViewControllerTests: XCTestCase {
     waitForExpectations(timeout: 0.0)
   }
   
+  func test_refreshData_setsRequest() {
+    // given
+    givenMockNetworkClient()
+    
+    // whem
+    sut.refreshData()
+    
+    // then
+    XCTAssertTrue(sut.dataTask === mockNetworkClient.getDogsDataTask)
+  }
+  
+  func test_refreshData_ifAlreadyRefreshing_doesntCallAgain() {
+    // given
+    givenMockNetworkClient()
+    
+    // when
+    sut.refreshData()
+    sut.refreshData()
+    
+    // then
+    XCTAssertEqual(mockNetworkClient.getDogsCallCount, 1)
+  }
+  
+  func test_refreshData_completionNilsDataTask() {
+    // given
+    givenMockNetworkClient()
+    
+    // when
+    sut.refreshData()
+    mockNetworkClient.getDogsCompletion(givenDogs(), nil)
+    
+    // then
+    XCTAssertNil(sut.dataTask)
+  }
+  
+  func test_refreshData_givenDogsResponse_setsViewModels() {
+    // given
+    givenMockNetworkClient()
+    let dogs = givenDogs()
+    let viewModels = dogs.map { DogViewModel(dog: $0) }
+    
+    // when
+    sut.refreshData()
+    mockNetworkClient.getDogsCompletion(dogs, nil)
+    
+    // then
+    XCTAssertEqual(sut.viewModels, viewModels)
+  }
+  
+  func test_refreshData_givenDogsResponse_reloadsTableView() {
+    // given
+    givenMockNetworkClient()
+    let dogs = givenDogs()
+    
+    class MocksTableView: UITableView {
+      var calledReloadData = false
+      
+      override func reloadData() {
+        calledReloadData = true
+      }
+    }
+    
+    let mockTableView = MocksTableView()
+    sut.tableView = mockTableView
+    
+    // when
+    sut.refreshData()
+    mockNetworkClient.getDogsCompletion(dogs, nil)
+    
+    // then
+    XCTAssertTrue(mockTableView.calledReloadData)
+  }
+  
+  func test_refreshData_beginsRefreshing() {
+    // given
+    givenMockNetworkClient()
+    
+    // when
+    sut.refreshData()
+    
+    // then
+    XCTAssertTrue(sut.tableView.refreshControl!.isRefreshing)
+  }
+  
+  func test_refreshData_givenDogsReponse_endsRefreshing() {
+    // given
+    givenMockNetworkClient()
+    let dogs = givenDogs()
+    
+    // when
+    sut.refreshData()
+    mockNetworkClient.getDogsCompletion(dogs, nil)
+    
+    // then
+    XCTAssertFalse(sut.tableView.refreshControl!.isRefreshing)
+  }
+  
   // MARK: - UITableViewDataSource Tests
   func test_tableView_numberOfRowsInSection_givenIsRefreshing_returns0() {
     // given
@@ -177,7 +285,7 @@ class ListingsViewControllerTests: XCTestCase {
     // then
     XCTAssertEqual(actual, expected)
   }
-
+  
   func test_tableView_numberOfRowsInSection_givenHasViewModels_returnsViewModelsCount() {
     // given
     let expected = 3
@@ -189,7 +297,7 @@ class ListingsViewControllerTests: XCTestCase {
     // then
     XCTAssertEqual(actual, expected)
   }
-
+  
   func test_tableView_numberOfRowsInSection_givenNoViewModels_returns1() {
     // given
     let expected = 1

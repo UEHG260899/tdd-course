@@ -57,6 +57,7 @@
 		9581B4B52316F3D200A78286 /* LogoNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */; };
 		9581B4B72316F44400A78286 /* LogoNavigationItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */; };
 		9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B82316F48E00A78286 /* DecodableTestCase.swift */; };
+		A4690D0728CC0A69001642B7 /* MockDogPatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4690D0628CC0A69001642B7 /* MockDogPatchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItem.swift; sourceTree = "<group>"; };
 		9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItemTests.swift; sourceTree = "<group>"; };
 		9581B4B82316F48E00A78286 /* DecodableTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableTestCase.swift; sourceTree = "<group>"; };
+		A4690D0628CC0A69001642B7 /* MockDogPatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDogPatchService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				423CB53C2718239700375DE0 /* MockURLSession.swift */,
+				A4690D0628CC0A69001642B7 /* MockDogPatchService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				42335BF222BD179600E21A72 /* UIView+ApplyShaddowTests.swift in Sources */,
 				9581B4B72316F44400A78286 /* LogoNavigationItemTests.swift in Sources */,
 				424E577A22E0C47A00C96D45 /* XCTAssertEqualToAny.swift in Sources */,
+				A4690D0728CC0A69001642B7 /* MockDogPatchService.swift in Sources */,
 				42A255A522BD0E7600C744D9 /* UIViewController+StoryboardCreatableTests.swift in Sources */,
 				427CCB0822BC73AC00F92FF7 /* UIViewController+NibCreatableTests.swift in Sources */,
 				9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */,

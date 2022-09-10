@@ -28,12 +28,20 @@
 
 import Foundation
 
+protocol DogPatchService {
+  func getDogs(completion: @escaping ([Dog]?, Error?) -> Void) -> URLSessionTaskProtocol
+}
+
 class DogPatchClient {
   
   let baseURL: URL
   let session: URLSessionProtocol
   let responseQueue: DispatchQueue?
 
+  static let shared = DogPatchClient(baseURL: URL(string: "https://dogpatchserver.herokuapp.com/api/v1/")!,
+                                     session: URLSession.shared,
+                                     responseQueue: .main)
+  
   init(baseURL: URL,
        session: URLSessionProtocol,
        responseQueue: DispatchQueue?) {
@@ -79,4 +87,9 @@ class DogPatchClient {
       completion(models, error)
     }
   }
+}
+
+
+extension DogPatchClient: DogPatchService {
+  
 }
