@@ -58,6 +58,9 @@
 		9581B4B52316F3D200A78286 /* LogoNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */; };
 		9581B4B72316F44400A78286 /* LogoNavigationItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */; };
 		9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B4B82316F48E00A78286 /* DecodableTestCase.swift */; };
+		A4A62EA228CCF5B200919036 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A62EA128CCF5B200919036 /* ImageClient.swift */; };
+		A4A62EA428CCF7EE00919036 /* ImageClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A62EA328CCF7EE00919036 /* ImageClientTests.swift */; };
+		A4A62EA628CD200A00919036 /* MockImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A62EA528CD200A00919036 /* MockImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		9581B4B42316F3D200A78286 /* LogoNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItem.swift; sourceTree = "<group>"; };
 		9581B4B62316F44300A78286 /* LogoNavigationItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationItemTests.swift; sourceTree = "<group>"; };
 		9581B4B82316F48E00A78286 /* DecodableTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableTestCase.swift; sourceTree = "<group>"; };
+		A4A62EA128CCF5B200919036 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
+		A4A62EA328CCF7EE00919036 /* ImageClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClientTests.swift; sourceTree = "<group>"; };
+		A4A62EA528CD200A00919036 /* MockImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +272,7 @@
 			children = (
 				4246731B271954A7003BD603 /* MockDogPatchService.swift */,
 				423CB53C2718239700375DE0 /* MockURLSession.swift */,
+				A4A62EA528CD200A00919036 /* MockImageService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 			children = (
 				428CB76B2716C90D0095DB92 /* DogPatchClient.swift */,
 				428CB7652716C0A60095DB92 /* URLSessionProtocol.swift */,
+				A4A62EA128CCF5B200919036 /* ImageClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 			children = (
 				428CB7692716C8F80095DB92 /* DogPatchClientTests.swift */,
 				428CB7672716C3010095DB92 /* URLSessionProtocolTests.swift */,
+				A4A62EA328CCF7EE00919036 /* ImageClientTests.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 				9581B4B52316F3D200A78286 /* LogoNavigationItem.swift in Sources */,
 				9581B4AC2316F32D00A78286 /* UIViewController+StoryboardCreatable.swift in Sources */,
 				4270357322B6FA98001080B1 /* ListingCell.swift in Sources */,
+				A4A62EA228CCF5B200919036 /* ImageClient.swift in Sources */,
 				42D837BE22B6DAD50036C5DD /* User.swift in Sources */,
 				42335BEF22BD166800E21A72 /* UIView+ApplyShadow.swift in Sources */,
 				9581B4B12316F35D00A78286 /* UIView+NibCreatable.swift in Sources */,
@@ -648,8 +658,10 @@
 				9581B4B72316F44400A78286 /* LogoNavigationItemTests.swift in Sources */,
 				424E577A22E0C47A00C96D45 /* XCTAssertEqualToAny.swift in Sources */,
 				4246731C271954A7003BD603 /* MockDogPatchService.swift in Sources */,
+				A4A62EA428CCF7EE00919036 /* ImageClientTests.swift in Sources */,
 				42A255A522BD0E7600C744D9 /* UIViewController+StoryboardCreatableTests.swift in Sources */,
 				427CCB0822BC73AC00F92FF7 /* UIViewController+NibCreatableTests.swift in Sources */,
+				A4A62EA628CD200A00919036 /* MockImageService.swift in Sources */,
 				9581B4B92316F48E00A78286 /* DecodableTestCase.swift in Sources */,
 				423CB53D2718239700375DE0 /* MockURLSession.swift in Sources */,
 				428CB7682716C3010095DB92 /* URLSessionProtocolTests.swift in Sources */,

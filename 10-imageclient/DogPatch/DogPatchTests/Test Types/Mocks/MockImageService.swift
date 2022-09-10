@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -27,56 +27,28 @@
 /// THE SOFTWARE.
 
 @testable import DogPatch
-import Foundation
+import UIKit
 
-class MockURLSession: URLSessionProtocol {
+class MockImageService: ImageService {
   
-  var queue: DispatchQueue? = nil
+  var setImageCalledCount = 0
+  var recievedImageView: UIImageView!
+  var recievedUrl: URL!
+  var recievedPlaceholder: UIImage!
   
-  func givenDispatchQueue() {
-    queue = DispatchQueue(label: "com.DogPatchTests.MockSession")
+  
+  func downloadImage(fromUrl: URL, completion: @escaping (UIImage?, Error?) -> Void) -> URLSessionTaskProtocol? {
+    return nil
   }
   
-  func makeDataTask(
-    with url: URL,
-    completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
-  -> URLSessionTaskProtocol {
-    return MockURLSessionTask(
-      completionHandler: completionHandler,
-      url: url,
-      queue: queue)
+  func setImage(on imageView: UIImageView, fromURL url: URL, withPlaceholder placeholder: UIImage?) {
+    setImageCalledCount += 1
+    recievedImageView = imageView
+    recievedUrl = url
+    recievedPlaceholder = placeholder
   }
+  
+  
 }
 
-class MockURLSessionTask: URLSessionTaskProtocol {
-  
-  var completionHandler: (Data?, URLResponse?, Error?) -> Void
-  var url: URL
-  
-  init(completionHandler:
-       @escaping (Data?, URLResponse?, Error?) -> Void,
-       url: URL,
-       queue: DispatchQueue?) {
-    
-    if let queue = queue {
-      self.completionHandler = { data, response, error in
-        queue.async() {
-          completionHandler(data, response, error)
-        }
-      }
-    } else {
-      self.completionHandler = completionHandler
-    }
-    self.url = url
-  }
-  
-  var calledResume = false
-  func resume() {
-    calledResume = true
-  }
-  
-  var calledCancel = false
-  func cancel() {
-    calledCancel = true
-  }
-}
+
