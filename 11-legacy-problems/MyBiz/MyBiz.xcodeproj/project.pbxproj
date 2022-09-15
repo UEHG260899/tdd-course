@@ -65,7 +65,30 @@
 		4C68965E27335B5E00337089 /* configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C68965D27335B5E00337089 /* configuration.json */; };
 		4C68966027335BB400337089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C68965F27335BB300337089 /* Main.storyboard */; };
 		4C6896622733676400337089 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6896612733676300337089 /* SceneDelegate.swift */; };
+		A4BB0A1228D2BB9E003418DB /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB0A1128D2BB9E003418DB /* MockApi.swift */; };
+		A4BB0A2228D2BDE3003418DB /* CalendarModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB0A2128D2BDE3003418DB /* CalendarModelTests.swift */; };
+		A4BB0A2528D2BE53003418DB /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB0A2428D2BE53003418DB /* CalendarModel.swift */; };
+		A4BB0A2628D2C2C3003418DB /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB0A1128D2BB9E003418DB /* MockApi.swift */; };
+		A4BB0A2828D2C529003418DB /* CalendarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB0A2728D2C529003418DB /* CalendarViewControllerTests.swift */; };
+		A4D0972028D2A4CE00E8B0C6 /* CalendarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0971F28D2A4CE00E8B0C6 /* CalendarViewControllerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4BB0A1B28D2BDC3003418DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 185CB1F023C78CE6009F7571 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 185CB1F723C78CE6009F7571;
+			remoteInfo = MyBiz;
+		};
+		A4D0971828D2A46B00E8B0C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 185CB1F023C78CE6009F7571 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 185CB1F723C78CE6009F7571;
+			remoteInfo = MyBiz;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		180DC61423C78D9800486B1A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,10 +151,31 @@
 		4C68965D27335B5E00337089 /* configuration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = configuration.json; sourceTree = "<group>"; };
 		4C68965F27335BB300337089 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C6896612733676300337089 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A4BB0A1128D2BB9E003418DB /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
+		A4BB0A1728D2BDC3003418DB /* MyBizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BB0A2128D2BDE3003418DB /* CalendarModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelTests.swift; sourceTree = "<group>"; };
+		A4BB0A2428D2BE53003418DB /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		A4BB0A2728D2C529003418DB /* CalendarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerTests.swift; sourceTree = "<group>"; };
+		A4D0971428D2A46B00E8B0C6 /* CharacterizationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharacterizationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D0971F28D2A4CE00E8B0C6 /* CalendarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		185CB1F523C78CE6009F7571 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4BB0A1428D2BDC3003418DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D0971128D2A46B00E8B0C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				185CB1FA23C78CE6009F7571 /* MyBiz */,
+				A4D0971528D2A46B00E8B0C6 /* CharacterizationTests */,
+				A4BB0A1828D2BDC3003418DB /* MyBizTests */,
 				185CB1F923C78CE6009F7571 /* Products */,
 			);
 			indentWidth = 2;
@@ -155,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				185CB1F823C78CE6009F7571 /* MyBiz.app */,
+				A4D0971428D2A46B00E8B0C6 /* CharacterizationTests.xctest */,
+				A4BB0A1728D2BDC3003418DB /* MyBizTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,8 +215,7 @@
 				4C68962027335B1D00337089 /* Configuration.swift */,
 				4C68962427335B1D00337089 /* LoginViewController.swift */,
 				4C6895FB27335B1B00337089 /* TitleView.swift */,
-				4C68961727335B1C00337089 /* CalendarCell.swift */,
-				4C6895F227335B1B00337089 /* CalendarViewController.swift */,
+				A4BB0A2328D2BE3D003418DB /* Calendar */,
 				4C68961A27335B1C00337089 /* AnnouncementsTableViewController.swift */,
 				4C68962627335B1D00337089 /* ErrorViewController.swift */,
 				4C68961227335B1B00337089 /* UIViewController+Alert.swift */,
@@ -233,6 +280,58 @@
 			path = JTAppleCalendar;
 			sourceTree = "<group>";
 		};
+		A4BB0A0E28D2BB65003418DB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A4BB0A1128D2BB9E003418DB /* MockApi.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A4BB0A1828D2BDC3003418DB /* MyBizTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4BB0A2028D2BDD2003418DB /* Cases */,
+			);
+			path = MyBizTests;
+			sourceTree = "<group>";
+		};
+		A4BB0A2028D2BDD2003418DB /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				A4BB0A2128D2BDE3003418DB /* CalendarModelTests.swift */,
+				A4BB0A2728D2C529003418DB /* CalendarViewControllerTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		A4BB0A2328D2BE3D003418DB /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4C68961727335B1C00337089 /* CalendarCell.swift */,
+				4C6895F227335B1B00337089 /* CalendarViewController.swift */,
+				A4BB0A2428D2BE53003418DB /* CalendarModel.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A4D0971528D2A46B00E8B0C6 /* CharacterizationTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0971D28D2A49000E8B0C6 /* Cases */,
+				A4BB0A0E28D2BB65003418DB /* Mocks */,
+			);
+			path = CharacterizationTests;
+			sourceTree = "<group>";
+		};
+		A4D0971D28D2A49000E8B0C6 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0971F28D2A4CE00E8B0C6 /* CalendarViewControllerTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,19 +353,65 @@
 			productReference = 185CB1F823C78CE6009F7571 /* MyBiz.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A4BB0A1628D2BDC3003418DB /* MyBizTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4BB0A1D28D2BDC3003418DB /* Build configuration list for PBXNativeTarget "MyBizTests" */;
+			buildPhases = (
+				A4BB0A1328D2BDC3003418DB /* Sources */,
+				A4BB0A1428D2BDC3003418DB /* Frameworks */,
+				A4BB0A1528D2BDC3003418DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4BB0A1C28D2BDC3003418DB /* PBXTargetDependency */,
+			);
+			name = MyBizTests;
+			productName = MyBizTests;
+			productReference = A4BB0A1728D2BDC3003418DB /* MyBizTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A4D0971328D2A46B00E8B0C6 /* CharacterizationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4D0971C28D2A46B00E8B0C6 /* Build configuration list for PBXNativeTarget "CharacterizationTests" */;
+			buildPhases = (
+				A4D0971028D2A46B00E8B0C6 /* Sources */,
+				A4D0971128D2A46B00E8B0C6 /* Frameworks */,
+				A4D0971228D2A46B00E8B0C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4D0971928D2A46B00E8B0C6 /* PBXTargetDependency */,
+			);
+			name = CharacterizationTests;
+			productName = CharacterizationTests;
+			productReference = A4D0971428D2A46B00E8B0C6 /* CharacterizationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		185CB1F023C78CE6009F7571 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					185CB1F723C78CE6009F7571 = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1300;
+					};
+					A4BB0A1628D2BDC3003418DB = {
+						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
+						TestTargetID = 185CB1F723C78CE6009F7571;
+					};
+					A4D0971328D2A46B00E8B0C6 = {
+						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
+						TestTargetID = 185CB1F723C78CE6009F7571;
 					};
 				};
 			};
@@ -284,6 +429,8 @@
 			projectRoot = "";
 			targets = (
 				185CB1F723C78CE6009F7571 /* MyBiz */,
+				A4D0971328D2A46B00E8B0C6 /* CharacterizationTests */,
+				A4BB0A1628D2BDC3003418DB /* MyBizTests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,6 +446,20 @@
 				4C68966027335BB400337089 /* Main.storyboard in Resources */,
 				4C68963327335B1D00337089 /* LICENSE in Resources */,
 				4C68965E27335B5E00337089 /* configuration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4BB0A1528D2BDC3003418DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D0971228D2A46B00E8B0C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +521,7 @@
 				4C68964B27335B1D00337089 /* Announcement.swift in Sources */,
 				4C68964527335B1D00337089 /* Token.swift in Sources */,
 				4C68964127335B1D00337089 /* UICollectionViewDelegates.swift in Sources */,
+				A4BB0A2528D2BE53003418DB /* CalendarModel.swift in Sources */,
 				4C68963827335B1D00337089 /* JTAppleCalendarDelegateProtocol.swift in Sources */,
 				4C68962B27335B1D00337089 /* Colors.swift in Sources */,
 				4C68965027335B1E00337089 /* PurchasesTableViewController.swift in Sources */,
@@ -385,7 +547,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A4BB0A1328D2BDC3003418DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BB0A2628D2C2C3003418DB /* MockApi.swift in Sources */,
+				A4BB0A2828D2C529003418DB /* CalendarViewControllerTests.swift in Sources */,
+				A4BB0A2228D2BDE3003418DB /* CalendarModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D0971028D2A46B00E8B0C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BB0A1228D2BB9E003418DB /* MockApi.swift in Sources */,
+				A4D0972028D2A4CE00E8B0C6 /* CalendarViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4BB0A1C28D2BDC3003418DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 185CB1F723C78CE6009F7571 /* MyBiz */;
+			targetProxy = A4BB0A1B28D2BDC3003418DB /* PBXContainerItemProxy */;
+		};
+		A4D0971928D2A46B00E8B0C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 185CB1F723C78CE6009F7571 /* MyBiz */;
+			targetProxy = A4D0971828D2A46B00E8B0C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		185CB20A23C78CE8009F7571 /* Debug */ = {
@@ -539,6 +733,112 @@
 			};
 			name = Release;
 		};
+		A4BB0A1E28D2BDC3003418DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5P4JJDT7CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.MyBizTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBiz";
+			};
+			name = Debug;
+		};
+		A4BB0A1F28D2BDC3003418DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5P4JJDT7CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.MyBizTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBiz";
+			};
+			name = Release;
+		};
+		A4D0971A28D2A46B00E8B0C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5P4JJDT7CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.CharacterizationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBiz";
+			};
+			name = Debug;
+		};
+		A4D0971B28D2A46B00E8B0C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5P4JJDT7CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.CharacterizationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBiz";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -556,6 +856,24 @@
 			buildConfigurations = (
 				185CB20D23C78CE8009F7571 /* Debug */,
 				185CB20E23C78CE8009F7571 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4BB0A1D28D2BDC3003418DB /* Build configuration list for PBXNativeTarget "MyBizTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BB0A1E28D2BDC3003418DB /* Debug */,
+				A4BB0A1F28D2BDC3003418DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4D0971C28D2A46B00E8B0C6 /* Build configuration list for PBXNativeTarget "CharacterizationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D0971A28D2A46B00E8B0C6 /* Debug */,
+				A4D0971B28D2A46B00E8B0C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

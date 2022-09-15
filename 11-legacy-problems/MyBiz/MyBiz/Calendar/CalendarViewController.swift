@@ -35,18 +35,36 @@ import UIKit
 class CalendarViewController: UIViewController {
   @IBOutlet weak var calendarView: JTAppleCalendarView!
 
-  var api: API { return (UIApplication.shared.delegate as! AppDelegate).api }
+  var api: API = UIApplication.appDelegate.api
   var events: [Event] = []
+  var model: CalendarModel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     calendarView.scrollingMode = .stopAtEachCalendarFrame
+    model = CalendarModel(api: api)
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    api.delegate = self
-    api.getEvents()
+    loadEvents()
+  }
+  
+  func loadEvents() {
+    events = []
+    model.getBirthdays { result in
+      if let newEvents = try? result.get() {
+        self.events.append(contentsOf: newEvents)
+        self.calendarView.reloadData()
+      }
+    }
+    
+    model.getEvents { result in
+      if let newEvents = try? result.get() {
+        self.events.append(contentsOf: newEvents)
+        self.calendarView.reloadData()
+      }
+    }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
