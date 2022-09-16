@@ -1,15 +1,15 @@
-/// Copyright (c) 2021 Razeware LLC
-///
+/// Copyright (c) 2022 Razeware LLC
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -30,63 +30,57 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+@testable import MyBiz
+import XCTest
 
-class LoginViewController: UIViewController {
-  @IBOutlet weak var emailField: UITextField!
-  @IBOutlet weak var passwordField: UITextField!
-  @IBOutlet weak var signInButton: UIButton!
-
-  var api: API!
-  let skin: Skin = .login
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    api.delegate = self
-    Styler.shared.style(background: view, buttons: [signInButton], with: skin)
+final class APITests: XCTestCase {
+  
+  
+  var sut: API!
+  
+  override func setUpWithError() throws {
+    try super.setUpWithError()
+    sut = MockAPI()
   }
-
-  @IBAction func signIn(_ sender: Any) {
-    guard let username = emailField.text,
-      let password = passwordField.text else { return }
-    guard username.isEmail && password.isValidPassword else {
-      // a little client-side validation ;)
-      showAlert(title: "Invalid Username or Password", subtitle: "Check the username or password")
-      return
-    }
-    api.login(username: username, password: password)
+  
+  override func tearDownWithError() throws {
+    sut = nil
+    try super.tearDownWithError()
   }
-}
-
-extension LoginViewController: APIDelegate {
-  func eventsLoaded(events: [Event]) {}
-  func eventsFailed(error: Error) {}
-  func orgLoaded(org: [Employee]) {}
-  func orgFailed(error: Error) {}
-  func announcementsFailed(error: Error) {}
-  func announcementsLoaded(announcements: [Announcement]) {}
-  func productsLoaded(products: [Product]) {}
-  func productsFailed(error: Error) {}
-  func purchasesLoaded(purchases: [PurchaseOrder]) {}
-  func purchasesFailed(error: Error) {}
-  func userLoaded(user: UserInfo) {}
-  func userFailed(error: Error) {}
-
-  func loginFailed(error: Error) {
-    let retyAction = SecondaryAction(title: "Try again") { [weak self] in
-      if let self = self {
-        self.signIn(self)
-      }
+  
+  func givenLoggedIn() {
+    sut.token = Token(token: "Nobody", userID: UUID())
+  }
+  
+  func testAPI_whenLogout_generatesNotification() {
+    // given
+    givenLoggedIn()
+    let exp = expectation(forNotification: userLoggedOutNotification, object: nil)
+    
+    // when
+    sut.logout()
+    
+    // then
+    waitForExpectations(timeout: 1)
+    XCTAssertNil(sut.token)
+  }
+  
+  func testAPI_whenLogin_generatesNotification() {
+    // given
+    var userInfo: [AnyHashable: Any]?
+    let exp = expectation(forNotification: userLoggedInNotification, object: nil) { note in
+      userInfo = note.userInfo
+      return true
     }
     
-    showAlert(title: "Login Failed",
-              subtitle: error.localizedDescription,
-              action: retyAction,
-              skin: .loginAlert)
-  }
-
-  func loginSucceeded(userId: String) {
+    // when
+    sut.login(username: "test", password: "test")
     
+    // then
+    waitForExpectations(timeout: 1)
+    let userId = userInfo?[UserNotificationKey.userId]
+    XCTAssertNotNil(userId)
   }
+  
+  
 }

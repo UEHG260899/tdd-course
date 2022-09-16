@@ -71,6 +71,10 @@
 		4C689688273855EF00337089 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C689687273855EF00337089 /* CalendarModel.swift */; };
 		4C68968927385A7500337089 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68967427384ED800337089 /* MockAPI.swift */; };
 		4C68968B273884D100337089 /* CalendarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68968A273884D100337089 /* CalendarViewControllerTests.swift */; };
+		A4C785B728D52D8A00F8A4E0 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C785B628D52D8A00F8A4E0 /* LoginViewControllerTests.swift */; };
+		A4C785B928D5311400F8A4E0 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C785B828D5311400F8A4E0 /* APITests.swift */; };
+		A4C785BB28D5376C00F8A4E0 /* ErrorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C785BA28D5376C00F8A4E0 /* ErrorViewControllerTests.swift */; };
+		A4C785BD28D539C900F8A4E0 /* ErrorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C785BC28D539C900F8A4E0 /* ErrorViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +162,10 @@
 		4C6896842738554100337089 /* CalendarModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelTests.swift; sourceTree = "<group>"; };
 		4C689687273855EF00337089 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		4C68968A273884D100337089 /* CalendarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerTests.swift; sourceTree = "<group>"; };
+		A4C785B628D52D8A00F8A4E0 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		A4C785B828D5311400F8A4E0 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		A4C785BA28D5376C00F8A4E0 /* ErrorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewControllerTests.swift; sourceTree = "<group>"; };
+		A4C785BC28D539C900F8A4E0 /* ErrorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				4C689671273751F800337089 /* CalendarViewControllerTests.swift */,
+				A4C785B628D52D8A00F8A4E0 /* LoginViewControllerTests.swift */,
+				A4C785BA28D5376C00F8A4E0 /* ErrorViewControllerTests.swift */,
 			);
 			path = Cases;
 			sourceTree = "<group>";
@@ -318,6 +328,8 @@
 			children = (
 				4C6896842738554100337089 /* CalendarModelTests.swift */,
 				4C68968A273884D100337089 /* CalendarViewControllerTests.swift */,
+				A4C785B828D5311400F8A4E0 /* APITests.swift */,
+				A4C785BC28D539C900F8A4E0 /* ErrorViewControllerTests.swift */,
 			);
 			path = Cases;
 			sourceTree = "<group>";
@@ -551,6 +563,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C785B728D52D8A00F8A4E0 /* LoginViewControllerTests.swift in Sources */,
+				A4C785BB28D5376C00F8A4E0 /* ErrorViewControllerTests.swift in Sources */,
 				4C68967527384ED800337089 /* MockAPI.swift in Sources */,
 				4C689672273751F800337089 /* CalendarViewControllerTests.swift in Sources */,
 			);
@@ -561,7 +575,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C68968927385A7500337089 /* MockAPI.swift in Sources */,
+				A4C785BD28D539C900F8A4E0 /* ErrorViewControllerTests.swift in Sources */,
 				4C68968B273884D100337089 /* CalendarViewControllerTests.swift in Sources */,
+				A4C785B928D5311400F8A4E0 /* APITests.swift in Sources */,
 				4C6896852738554100337089 /* CalendarModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -687,6 +704,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -703,6 +721,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyBiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -722,6 +741,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyBiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
