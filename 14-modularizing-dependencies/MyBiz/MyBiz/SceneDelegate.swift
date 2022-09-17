@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Login
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?

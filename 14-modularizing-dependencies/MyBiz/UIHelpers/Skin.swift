@@ -30,24 +30,49 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
 import UIKit
 
-extension UIViewController {
-  func showAlert(
-    title: String,
-    subtitle: String?,
-    action: ErrorViewController.SecondaryAction? = nil,
-    skin: Skin? = nil
-  ) {
-    let alertController = UIStoryboard(name: "Main", bundle: nil)
-      .instantiateViewController(withIdentifier: "error") as! ErrorViewController
-    alertController.set(title: title, subtitle: subtitle)
-    alertController.modalPresentationStyle = .overCurrentContext
-    alertController.modalTransitionStyle = .crossDissolve
-    alertController.secondaryAction = action
-    alertController.skin = skin
-    let root = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController
-    root?.present(alertController, animated: true)
-  }
+public struct Skin {
+  let backgroundColor: UIColor
+  let controlBackground: UIColor?
+  let controlBorder: UIColor?
+  let controlTextColor: UIColor?
+  let tableCellTextColor: UIColor?
+  let stepperColor: UIColor?
+
+  public static let login = Skin(
+    backgroundColor: UIColor(named: "canary")!,
+    controlBackground: UIColor(named: "pink"),
+    controlBorder: UIColor(named: "controlBorderGray"),
+    controlTextColor: UIColor(named: "yellow"),
+    tableCellTextColor: nil,
+    stepperColor: nil)
+  public static let loginAlert = Skin(
+    backgroundColor: UIColor(named: "pink")!,
+    controlBackground: nil,
+    controlBorder: nil,
+    controlTextColor: UIColor(named: "yellow"),
+    tableCellTextColor: nil,
+    stepperColor: nil)
+  public static let announcements = Skin(
+    backgroundColor: UIColor(named: "purple")!,
+    controlBackground: nil,
+    controlBorder: nil,
+    controlTextColor: .darkText,
+    tableCellTextColor: .bizLightGray,
+    stepperColor: nil)
+  public static let purchaseOrder = Skin(
+    backgroundColor: .bizCanary,
+    controlBackground: nil,
+    controlBorder: nil,
+    controlTextColor: .darkText,
+    tableCellTextColor: .darkGray,
+    stepperColor: .bizPurple)
+  public static let orgChart = Skin(
+    backgroundColor: .bizYellow,
+    controlBackground: nil,
+    controlBorder: nil,
+    controlTextColor: .darkText,
+    tableCellTextColor: .darkText,
+    stepperColor: nil)
 }

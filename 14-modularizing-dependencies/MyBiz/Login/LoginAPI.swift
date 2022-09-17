@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -31,17 +31,7 @@
 /// THE SOFTWARE.
 
 import Foundation
-@testable import MyBiz
 
-class SpyAPI: API {
-  var loginCalled = false
-
-  init(api: API) {
-    super.init(server: api.server)
-  }
-
-  override func login(username: String, password: String) {
-    loginCalled = true
-    super.login(username: username, password: password)
-  }
+public protocol LoginAPI {
+  func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void)
 }

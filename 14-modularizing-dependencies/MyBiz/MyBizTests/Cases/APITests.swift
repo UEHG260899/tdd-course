@@ -32,6 +32,8 @@
 
 import XCTest
 @testable import MyBiz
+@testable import Login
+@testable import UIHelpers
 
 class APITests: XCTestCase {
   var sut: API!
@@ -76,7 +78,7 @@ class APITests: XCTestCase {
     }
 
     // when
-    sut.login(username: "test", password: "test")
+    sut.login(username: "test", password: "test") { _ in}
 
     // then
     wait(for: [exp], timeout: 1)

@@ -31,57 +31,61 @@
 /// THE SOFTWARE.
 
 import XCTest
-@testable import MyBiz
-@testable import UIHelpers
+@testable import Login
 
-class ErrorViewControllerTests: XCTestCase {
-  var sut: ErrorViewController!
+class ValidatorsTests: XCTestCase {
+  func testString_whenHasAnAt_isAnEmail() {
+    // given
+    let testString = "something@somethingelse"
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
-    sut = UIStoryboard(name: "UIhelpers", bundle: Bundle(for: ErrorViewController.self))
-      .instantiateViewController(withIdentifier: "error")
-      as? ErrorViewController
-  }
-
-  override func tearDownWithError() throws {
-    sut = nil
-    try super.tearDownWithError()
-  }
-
-  func whenDefault() {
-    sut.loadViewIfNeeded()
-  }
-
-  func whenSetToLogin() {
-    sut.secondaryAction = .init(title: "Try Again") {}
-    sut.loadViewIfNeeded()
-  }
-
-  func testViewController_whenSetToLogin_primaryButtonIsOK() {
     // when
-    whenSetToLogin()
+    let isEmail = testString.isEmail
 
     // then
-    XCTAssertEqual(sut.okButton.currentTitle, "OK")
+    XCTAssertTrue(isEmail)
   }
 
-  func testViewController_whenSetToLogin_showsTryAgainButton() {
+  func testString_withNoAt_isNotAnEmail() {
+    // given
+    let testString = "just_something"
+
     // when
-    whenSetToLogin()
+    let isEmail = testString.isEmail
 
     // then
-    XCTAssertFalse(sut.secondaryButton.isHidden)
-    XCTAssertEqual(
-      sut.secondaryButton.currentTitle,
-      "Try Again")
+    XCTAssertFalse(isEmail)
   }
 
-  func testViewController_whenDefault_secondaryButtonIsHidden() {
+  func testString_overTwoMixedCaps_isAPassword() {
+    // given
+    let testString = "a1A"
+
     // when
-    whenDefault()
+    let isPassword = testString.isValidPassword
 
     // then
-    XCTAssertNil(sut.secondaryButton.superview)
+    XCTAssertTrue(isPassword)
+  }
+
+  func testString_overTwoWithNoMixed_isNotAPassword() {
+    // given
+    let testString = "123"
+
+    // when
+    let isPassword = testString.isValidPassword
+
+    // then
+    XCTAssertFalse(isPassword)
+  }
+
+  func testString_onlyTwoCharacters_isNotAPassword() {
+    // given
+    let testString = "aA"
+
+    // when
+    let isPassword = testString.isValidPassword
+
+    // then
+    XCTAssertFalse(isPassword)
   }
 }

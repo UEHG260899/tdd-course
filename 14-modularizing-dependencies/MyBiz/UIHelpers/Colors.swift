@@ -32,60 +32,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-  @IBOutlet weak var emailField: UITextField!
-  @IBOutlet weak var passwordField: UITextField!
-  @IBOutlet weak var signInButton: UIButton!
-
-  var api: API!
-  let skin: Skin = .login
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    api.delegate = self
-    Styler.shared.style(background: view, buttons: [signInButton], with: skin)
-  }
-
-  @IBAction func signIn(_ sender: Any) {
-    guard let username = emailField.text,
-      let password = passwordField.text else { return }
-    guard username.isEmail && password.isValidPassword else {
-      // a little client-side validation ;)
-      showAlert(title: "Invalid Username or Password", subtitle: "Check the username or password")
-      return
-    }
-    api.login(username: username, password: password)
-  }
-}
-
-extension LoginViewController: APIDelegate {
-  func eventsLoaded(events: [Event]) {}
-  func eventsFailed(error: Error) {}
-  func orgLoaded(org: [Employee]) {}
-  func orgFailed(error: Error) {}
-  func announcementsFailed(error: Error) {}
-  func announcementsLoaded(announcements: [Announcement]) {}
-  func productsLoaded(products: [Product]) {}
-  func productsFailed(error: Error) {}
-  func purchasesLoaded(purchases: [PurchaseOrder]) {}
-  func purchasesFailed(error: Error) {}
-  func userLoaded(user: UserInfo) {}
-  func userFailed(error: Error) {}
-
-  func loginFailed(error: Error) {
-    let retryAction = ErrorViewController.SecondaryAction(
-      title: "Try Again") { [weak self] in
-      if let self = self {
-        self.signIn(self)
-      }
-    }
-    showAlert(
-      title: "Login Failed",
-      subtitle: error.localizedDescription,
-      action: retryAction,
-      skin: .loginAlert)
-  }
-
-  func loginSucceeded(userId: String) {}
+extension UIColor {
+  public class var bizCanary: UIColor { return UIColor(named: "canary")! }
+  public class var bizPink: UIColor { return UIColor(named: "pink")! }
+  public class var bizYellow: UIColor { return UIColor(named: "yellow")! }
+  public class var bizPurple: UIColor { return UIColor(named: "purple")! }
+  public class var bizLightGray: UIColor { return UIColor(named: "lightGray")! }
+  public class var bizDarkGray: UIColor { return UIColor(named: "darkGray")! }
 }

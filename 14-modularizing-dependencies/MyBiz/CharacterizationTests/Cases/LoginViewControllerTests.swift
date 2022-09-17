@@ -32,6 +32,8 @@
 
 import XCTest
 @testable import MyBiz
+@testable import Login
+@testable import UIHelpers
 
 class LoginViewControllerTests: XCTestCase {
   var sut: LoginViewController!
@@ -39,7 +41,7 @@ class LoginViewControllerTests: XCTestCase {
 
   override func setUpWithError() throws {
     try super.setUpWithError()
-    sut = UIStoryboard(name: "Main", bundle: nil)
+    sut = UIStoryboard(name: "Main", bundle: Bundle(for: DayDetailTableViewController.self))
       .instantiateViewController(withIdentifier: "login")
     as? LoginViewController
     UIApplication.appDelegate.userId = nil

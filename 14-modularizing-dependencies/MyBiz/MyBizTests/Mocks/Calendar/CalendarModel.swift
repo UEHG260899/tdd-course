@@ -109,8 +109,6 @@ extension CalendarModel: APIDelegate {
     eventsCallback = nil
   }
 
-  func loginFailed(error: Error) {}
-  func loginSucceeded(userId: String) {}
   func announcementsFailed(error: Error) {}
   func announcementsLoaded(announcements: [Announcement]) {}
   func productsLoaded(products: [Product]) {}

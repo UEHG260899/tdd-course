@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import Foundation
+import UIHelpers
 
 //swiftlint:disable type_name identifier_name
 struct Configuration: Codable {
@@ -49,7 +50,7 @@ struct Configuration: Codable {
 
   let server: String
   let debug: Bool
-  let ui: UI
+  let ui: UIConfiguration
   let rules: BusinessRules
 }
 

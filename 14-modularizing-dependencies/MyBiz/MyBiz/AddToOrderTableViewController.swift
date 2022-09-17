@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import UIHelpers
 
 class AddToOrderTableViewController: UITableViewController {
   var api: API { return (UIApplication.shared.delegate as! AppDelegate).api }

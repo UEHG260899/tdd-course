@@ -94,8 +94,6 @@ extension SettingsTableViewController: APIDelegate {
   func eventsFailed(error: Error) {}
   func orgLoaded(org: [Employee]) {}
   func orgFailed(error: Error) {}
-  func loginFailed(error: Error) {}
-  func loginSucceeded(userId: String) {}
   func announcementsFailed(error: Error) {}
   func announcementsLoaded(announcements: [Announcement]) {}
 

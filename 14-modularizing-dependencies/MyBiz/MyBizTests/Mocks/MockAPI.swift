@@ -121,9 +121,9 @@ class MockAPI: API {
     super.init(server: "http://mockserver")
   }
 
-  override func login(username: String, password: String) {
+  override func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
     let token = Token(token: username, userID: UUID())
-    handleToken(token: token)
+    handleToken(token: token, completion: completion)
   }
 
   // MARK: - Events

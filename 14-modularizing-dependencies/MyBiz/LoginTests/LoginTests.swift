@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -31,57 +31,31 @@
 /// THE SOFTWARE.
 
 import XCTest
-@testable import MyBiz
-@testable import UIHelpers
+@testable import Login
 
-class ErrorViewControllerTests: XCTestCase {
-  var sut: ErrorViewController!
+final class LoginTests: XCTestCase {
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
-    sut = UIStoryboard(name: "UIhelpers", bundle: Bundle(for: ErrorViewController.self))
-      .instantiateViewController(withIdentifier: "error")
-      as? ErrorViewController
-  }
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
 
-  override func tearDownWithError() throws {
-    sut = nil
-    try super.tearDownWithError()
-  }
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
 
-  func whenDefault() {
-    sut.loadViewIfNeeded()
-  }
+    func testExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Any test you write for XCTest can be annotated as throws and async.
+        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
+        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    }
 
-  func whenSetToLogin() {
-    sut.secondaryAction = .init(title: "Try Again") {}
-    sut.loadViewIfNeeded()
-  }
+    func testPerformanceExample() throws {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
 
-  func testViewController_whenSetToLogin_primaryButtonIsOK() {
-    // when
-    whenSetToLogin()
-
-    // then
-    XCTAssertEqual(sut.okButton.currentTitle, "OK")
-  }
-
-  func testViewController_whenSetToLogin_showsTryAgainButton() {
-    // when
-    whenSetToLogin()
-
-    // then
-    XCTAssertFalse(sut.secondaryButton.isHidden)
-    XCTAssertEqual(
-      sut.secondaryButton.currentTitle,
-      "Try Again")
-  }
-
-  func testViewController_whenDefault_secondaryButtonIsHidden() {
-    // when
-    whenDefault()
-
-    // then
-    XCTAssertNil(sut.secondaryButton.superview)
-  }
 }

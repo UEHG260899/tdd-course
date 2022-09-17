@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,54 +30,14 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import XCTest
-@testable import MyBiz
+#import <Foundation/Foundation.h>
 
-class ErrorViewControllerTests: XCTestCase {
-  var sut: ErrorViewController!
+//! Project version number for Login.
+FOUNDATION_EXPORT double LoginVersionNumber;
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
-    sut = UIStoryboard(name: "Main", bundle: nil)
-      .instantiateViewController(withIdentifier: "error")
-      as? ErrorViewController
-  }
+//! Project version string for Login.
+FOUNDATION_EXPORT const unsigned char LoginVersionString[];
 
-  override func tearDownWithError() throws {
-    sut = nil
-    try super.tearDownWithError()
-  }
+// In this header, you should import all the public headers of your framework using statements like #import <Login/PublicHeader.h>
 
-  func testSecondaryButton_whenActionSet_hasCorrectTitle() {
-    // given
-    let action = ErrorViewController.SecondaryAction(
-      title: "title") {}
-    sut.secondaryAction = action
 
-    // when
-    sut.loadViewIfNeeded()
-
-    // then
-    XCTAssertEqual(sut.secondaryButton.currentTitle, "title")
-  }
-
-  func testSecondaryAction_whenButtonTapped_isInvoked() {
-    // given
-    let exp = expectation(description: "secondary action")
-    var actionHappened = false
-    let action = ErrorViewController.SecondaryAction(
-      title: "action") {
-      actionHappened = true
-      exp.fulfill()
-    }
-    sut.secondaryAction = action
-    sut.loadViewIfNeeded()
-
-    // when
-    sut.secondaryAction(())
-
-    // then
-    wait(for: [exp], timeout: 1)
-    XCTAssertTrue(actionHappened)
-  }
-}

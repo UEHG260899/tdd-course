@@ -31,48 +31,50 @@
 /// THE SOFTWARE.
 
 import UIKit
+import UIHelpers
 
-class Styler {
-  static let shared = Styler()
+public class LoginViewController: UIViewController {
+  @IBOutlet weak var emailField: UITextField!
+  @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var signInButton: UIButton!
 
-  let configuration = AppDelegate.configuration!
+  public var api: LoginAPI!
+  let skin: Skin = .login
 
-  func style(
-    background: UIView? = nil,
-    buttons: [UIButton]? = nil,
-    with skin: Skin
-  ) {
-    background.flatMap { style(background: $0, skin: skin) }
-    buttons?.forEach { style(button: $0, skin: skin) }
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+
+    Styler.shared.style(background: view, buttons: [signInButton], with: skin)
   }
 
-  func style(background: UIView, skin: Skin) {
-    background.backgroundColor = skin.backgroundColor
-  }
-
-  func style(button: UIButton, skin: Skin) {
-    if let borderColor = skin.controlBorder {
-      button.layer.cornerRadius = CGFloat(configuration.ui.button.cornerRadius)
-      button.layer.borderWidth = CGFloat(configuration.ui.button.borderWidth)
-      button.layer.borderColor = borderColor.cgColor
+  @IBAction func signIn(_ sender: Any) {
+    guard let username = emailField.text,
+      let password = passwordField.text else { return }
+    guard username.isEmail && password.isValidPassword else {
+      // a little client-side validation ;)
+      showAlert(title: "Invalid Username or Password", subtitle: "Check the username or password")
+      return
     }
-    button.backgroundColor = skin.controlBackground
-    button.setTitleColor(skin.controlTextColor, for: .normal)
-  }
-
-  func style(cell: UITableViewCell, with skin: Skin) {
-    cell.backgroundColor = skin.backgroundColor
-    for view in cell.contentView.subviews {
-      if let label = view as? UILabel {
-        label.textColor = skin.tableCellTextColor
-      }
-      if let textField = view as? UITextField {
-        textField.textColor = skin.tableCellTextColor
-      }
-      if let stepper = view as? UIStepper {
-        stepper.tintColor = skin.tableCellTextColor
-        stepper.backgroundColor = skin.stepperColor
+    api.login(username: username, password: password) { result in
+      if case .failure(let error) = result {
+        self.loginFailed(error: error)
       }
     }
+  }
+}
+
+extension LoginViewController {
+  func loginFailed(error: Error) {
+    let retryAction = ErrorViewController.SecondaryAction(
+      title: "Try Again") { [weak self] in
+      if let self = self {
+        self.signIn(self)
+      }
+    }
+    showAlert(
+      title: "Login Failed",
+      subtitle: error.localizedDescription,
+      action: retryAction,
+      skin: .loginAlert)
   }
 }

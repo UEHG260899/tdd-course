@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import Foundation
+import Login
 
 let userLoggedInNotification =
   Notification.Name("user logged in")
@@ -42,8 +43,6 @@ let userLoggedOutNotification =
   Notification.Name("user logged out")
 
 protocol APIDelegate: AnyObject {
-  func loginFailed(error: Error)
-  func loginSucceeded(userId: String)
   func announcementsFailed(error: Error)
   func announcementsLoaded(announcements: [Announcement])
   func orgLoaded(org: [Employee])
@@ -58,7 +57,7 @@ protocol APIDelegate: AnyObject {
   func userFailed(error: Error)
 }
 
-class API {
+class API: LoginAPI {
   let server: String
   let session: URLSession
 
@@ -70,35 +69,44 @@ class API {
     session = URLSession(configuration: .default)
   }
 
-  func login(username: String, password: String) {
+  func login(
+    username: String,
+    password: String,
+    completion: @escaping (Result<String, Error>) -> Void
+  ) {
     let eventsEndpoint = server + "api/users/login"
     let eventsURL = URL(string: eventsEndpoint)!
     var urlRequest = URLRequest(url: eventsURL)
     urlRequest.httpMethod = "POST"
     let data = "\(username):\(password)".data(using: .utf8)!
     let basic = "Basic \(data.base64EncodedString())"
-    urlRequest.addValue(basic, forHTTPHeaderField: "Authorization")
-    let task = session.dataTask(with: urlRequest) { data, _, error in
+    urlRequest.addValue(
+      basic,
+      forHTTPHeaderField: "Authorization")
+    let task = session.dataTask(with: urlRequest) {
+      data, _, error in
       guard let data = data else {
         if error != nil {
           DispatchQueue.main.async {
-            self.delegate?.loginFailed(error: error!)
+            completion(.failure(error!))
           }
         }
         return
       }
       let decoder = JSONDecoder()
       if let token = try? decoder.decode(Token.self, from: data) {
-        self.handleToken(token: token)
+        self.handleToken(token: token, completion: completion)
       } else {
         do {
-          let error = try decoder.decode(APIError.self, from: data)
+          let error = try decoder.decode(
+            APIError.self,
+            from: data)
           DispatchQueue.main.async {
-            self.delegate?.loginFailed(error: error)
+            completion(.failure(error))
           }
         } catch {
           DispatchQueue.main.async {
-            self.delegate?.loginFailed(error: error)
+            completion(.failure(error))
           }
         }
       }
@@ -107,7 +115,10 @@ class API {
     task.resume()
   }
 
-  func handleToken(token: Token) {
+  func handleToken(
+    token: Token,
+    completion: @escaping (Result<String, Error>) -> Void
+  ) {
     self.token = token
     Logger.logDebug("user \(token.user.id)")
     DispatchQueue.main.async {
@@ -118,9 +129,10 @@ class API {
           UserNotificationKey.userId: token.user.id.uuidString
         ])
       NotificationCenter.default.post(note)
-      self.delegate?.loginSucceeded(userId: token.user.id.uuidString)
+      completion(.success(token.user.id.uuidString))
     }
   }
+
 
   func logout() {
     token = nil
