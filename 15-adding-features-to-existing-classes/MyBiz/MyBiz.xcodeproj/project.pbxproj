@@ -95,6 +95,13 @@
 		4C6896EA2741D96500337089 /* UIHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6896C02741D32E00337089 /* UIHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C6896EF2741DAC000337089 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6896EE2741DAC000337089 /* LoginAPI.swift */; };
 		4C6896F02741DCF500337089 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6896942741BCFA00337089 /* ValidatorsTests.swift */; };
+		A4C7864128D5503300F8A4E0 /* AnalyticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864028D5503300F8A4E0 /* AnalyticsAPI.swift */; };
+		A4C7864328D5506600F8A4E0 /* AnalyticsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864228D5506600F8A4E0 /* AnalyticsAPITests.swift */; };
+		A4C7864528D5513400F8A4E0 /* API+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864428D5513400F8A4E0 /* API+Analytics.swift */; };
+		A4C7864828D5529E00F8A4E0 /* MockSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864728D5529E00F8A4E0 /* MockSender.swift */; };
+		A4C7864A28D55A9F00F8A4E0 /* AnnouncementsTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864928D55A9F00F8A4E0 /* AnnouncementsTableViewControllerTests.swift */; };
+		A4C7864C28D55ADD00F8A4E0 /* MockAnalyticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864B28D55ADD00F8A4E0 /* MockAnalyticsAPI.swift */; };
+		A4C7864E28D55DCE00F8A4E0 /* OrgTableViewControlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7864D28D55DCE00F8A4E0 /* OrgTableViewControlerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +269,13 @@
 		4C6896C72741D32F00337089 /* UIHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6896E22741D3E200337089 /* UIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfiguration.swift; sourceTree = "<group>"; };
 		4C6896EE2741DAC000337089 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		A4C7864028D5503300F8A4E0 /* AnalyticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAPI.swift; sourceTree = "<group>"; };
+		A4C7864228D5506600F8A4E0 /* AnalyticsAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAPITests.swift; sourceTree = "<group>"; };
+		A4C7864428D5513400F8A4E0 /* API+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Analytics.swift"; sourceTree = "<group>"; };
+		A4C7864728D5529E00F8A4E0 /* MockSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSender.swift; sourceTree = "<group>"; };
+		A4C7864928D55A9F00F8A4E0 /* AnnouncementsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTableViewControllerTests.swift; sourceTree = "<group>"; };
+		A4C7864B28D55ADD00F8A4E0 /* MockAnalyticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnalyticsAPI.swift; sourceTree = "<group>"; };
+		A4C7864D28D55DCE00F8A4E0 /* OrgTableViewControlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgTableViewControlerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +370,7 @@
 		185CB1FA23C78CE6009F7571 /* MyBiz */ = {
 			isa = PBXGroup;
 			children = (
+				A4C7863F28D54FED00F8A4E0 /* Analytics */,
 				4C68961E27335B1C00337089 /* AppDelegate.swift */,
 				4C6896612733676300337089 /* SceneDelegate.swift */,
 				4C68962027335B1D00337089 /* Configuration.swift */,
@@ -382,7 +397,6 @@
 				4C68961C27335B1C00337089 /* Event.swift */,
 				4C6895F827335B1B00337089 /* Product.swift */,
 				4C68961927335B1C00337089 /* PurchaseOrder.swift */,
-				4C6895F627335B1B00337089 /* Report.swift */,
 				4C68965F27335BB300337089 /* Main.storyboard */,
 				185CB20423C78CE8009F7571 /* Assets.xcassets */,
 				4C68965D27335B5E00337089 /* configuration.json */,
@@ -465,6 +479,7 @@
 		4C68967B273854F200337089 /* MyBizTests */ = {
 			isa = PBXGroup;
 			children = (
+				A4C7864628D5528F00F8A4E0 /* Mocks */,
 				4C6896832738550A00337089 /* Cases */,
 			);
 			path = MyBizTests;
@@ -477,6 +492,9 @@
 				4C68968A273884D100337089 /* CalendarViewControllerTests.swift */,
 				4C68968E273B26A900337089 /* APITests.swift */,
 				4C4670752741F33500F7FCFD /* AppDelegateTests.swift */,
+				A4C7864228D5506600F8A4E0 /* AnalyticsAPITests.swift */,
+				A4C7864928D55A9F00F8A4E0 /* AnnouncementsTableViewControllerTests.swift */,
+				A4C7864D28D55DCE00F8A4E0 /* OrgTableViewControlerTests.swift */,
 			);
 			path = Cases;
 			sourceTree = "<group>";
@@ -550,6 +568,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4C7863F28D54FED00F8A4E0 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				4C6895F627335B1B00337089 /* Report.swift */,
+				A4C7864028D5503300F8A4E0 /* AnalyticsAPI.swift */,
+				A4C7864428D5513400F8A4E0 /* API+Analytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		A4C7864628D5528F00F8A4E0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A4C7864728D5529E00F8A4E0 /* MockSender.swift */,
+				A4C7864B28D55ADD00F8A4E0 /* MockAnalyticsAPI.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -867,11 +904,13 @@
 				4C68963B27335B1D00337089 /* CalendarEnums.swift in Sources */,
 				4C68963F27335B1D00337089 /* JTAppleCalendarVariables.swift in Sources */,
 				4C68963727335B1D00337089 /* JTAppleCollectionReusableView.swift in Sources */,
+				A4C7864128D5503300F8A4E0 /* AnalyticsAPI.swift in Sources */,
 				4C68963227335B1D00337089 /* JTAppleCalendarView.swift in Sources */,
 				4C68964E27335B1D00337089 /* PurchaseOrder.swift in Sources */,
 				4C68963627335B1D00337089 /* InternalActionFunctions.swift in Sources */,
 				4C68963A27335B1D00337089 /* CalendarStructs.swift in Sources */,
 				4C68965427335B1E00337089 /* UserInfo.swift in Sources */,
+				A4C7864528D5513400F8A4E0 /* API+Analytics.swift in Sources */,
 				4C68965527335B1E00337089 /* Configuration.swift in Sources */,
 				4C68963927335B1D00337089 /* JTCalendarProtocols.swift in Sources */,
 				4C68964B27335B1D00337089 /* Announcement.swift in Sources */,
@@ -918,9 +957,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C68968927385A7500337089 /* MockAPI.swift in Sources */,
+				A4C7864828D5529E00F8A4E0 /* MockSender.swift in Sources */,
 				4C4670762741F33500F7FCFD /* AppDelegateTests.swift in Sources */,
 				4C68968B273884D100337089 /* CalendarViewControllerTests.swift in Sources */,
+				A4C7864328D5506600F8A4E0 /* AnalyticsAPITests.swift in Sources */,
+				A4C7864C28D55ADD00F8A4E0 /* MockAnalyticsAPI.swift in Sources */,
+				A4C7864E28D55DCE00F8A4E0 /* OrgTableViewControlerTests.swift in Sources */,
 				4C68968F273B26A900337089 /* APITests.swift in Sources */,
+				A4C7864A28D55A9F00F8A4E0 /* AnnouncementsTableViewControllerTests.swift in Sources */,
 				4C6896852738554100337089 /* CalendarModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1060,6 +1104,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1114,6 +1159,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1131,6 +1177,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyBiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1151,6 +1198,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyBiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

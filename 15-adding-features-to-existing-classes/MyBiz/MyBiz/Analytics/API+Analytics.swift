@@ -31,3 +31,45 @@
 /// THE SOFTWARE.
 
 import Foundation
+
+extension API: AnalyticsAPI {
+  func sendReport(report: Report) {
+    try? logAnalytics(analytics: report) { _ in}
+  }
+}
+
+extension API {
+  func logAnalytics(
+    analytics: Report,
+    completion: @escaping (Result<Report, Error>) -> Void
+  ) throws {
+
+    let url = URL(string: server + "api/analytics")!
+    var request = URLRequest(url: url)
+    if let token = token?.token {
+      let bearer = "Bearer \(token)"
+      request.addValue(
+        bearer,
+        forHTTPHeaderField: "Authorization")
+    }
+    request.addValue(
+      "application/json",
+      forHTTPHeaderField: "Content-Type")
+    request.httpMethod = "POST"
+
+    let coder = JSONEncoder()
+    coder.dateEncodingStrategy = .iso8601
+    let data = try coder.encode(analytics)
+    request.httpBody = data
+
+    sender.send(
+      request: request,
+      success: { savedEvent in
+        completion(.success(savedEvent))
+      },
+      failure: { error in
+        completion(.failure(error))
+      })
+  }
+}
+

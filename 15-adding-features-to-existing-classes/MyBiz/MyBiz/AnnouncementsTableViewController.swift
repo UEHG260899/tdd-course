@@ -36,25 +36,37 @@ import UIHelpers
 class AnnouncementsTableViewController: UITableViewController {
   var api: API { return (UIApplication.shared.delegate as! AppDelegate).api }
   var announcements: [Announcement] = []
-
+  var analytics: AnalyticsAPI?
+  
   let skin: Skin = .announcements
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     Styler.shared.style(background: view, skin: skin)
   }
-
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     api.delegate = self
     api.getAnnouncements()
+    let screenReport = Report(
+      name: AnalyticsEvent.announcementsShown.rawValue,
+      recordedDate: Date(),
+      type: AnalyticsType.screenView.rawValue,
+      duration: nil,
+      device: UIDevice.current.model,
+      os: UIDevice.current.systemVersion,
+      appVersion: Bundle.main.object(
+        forInfoDictionaryKey: "CFBundleShortVersionString")
+        as! String)
+    analytics?.sendReport(report: screenReport)
   }
-
+  
   // MARK: - Table view data source
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return announcements.count
   }
-
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     let announcement = announcements[indexPath.row]
@@ -62,7 +74,7 @@ class AnnouncementsTableViewController: UITableViewController {
     cell.backgroundColor = .clear
     return cell
   }
-
+  
   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     Styler.shared.style(cell: cell, with: skin)
   }
@@ -81,13 +93,15 @@ extension AnnouncementsTableViewController: APIDelegate {
   func orgFailed(error: Error) {}
   func userLoaded(user: UserInfo) {}
   func userFailed(error: Error) {}
-
+  
   func announcementsFailed(error: Error) {
     showAlert(title: "Could not load announcements", subtitle: error.localizedDescription)
   }
-
+  
   func announcementsLoaded(announcements: [Announcement]) {
     self.announcements = announcements
     tableView.reloadData()
   }
 }
+
+extension AnnouncementsTableViewController: ReportSending {}

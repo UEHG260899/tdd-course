@@ -40,6 +40,7 @@ class OrgTableViewController: UITableViewController {
   var org: [Employee] = []
   var rows: [(String, Int)] = []
   var expandedRows = Set<String>()
+  var analytics: AnalyticsAPI?
   let skin: Skin = .orgChart
 
   override func viewDidLoad() {
@@ -51,6 +52,11 @@ class OrgTableViewController: UITableViewController {
     super.viewWillAppear(animated)
     api.delegate = self
     api.getOrgChart()
+    let report = Report.make(
+      event: .orgChartShown,
+      type: .screenView)
+    analytics?.sendReport(report: report)
+
   }
 
   // MARK: - Table view data source
@@ -138,4 +144,8 @@ extension OrgTableViewController: APIDelegate {
   func orgFailed(error: Error) {
     showAlert(title: "Could not load org chart", subtitle: error.localizedDescription)
   }
+}
+
+extension OrgTableViewController: ReportSending {
+  
 }

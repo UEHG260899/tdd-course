@@ -31,3 +31,11 @@
 /// THE SOFTWARE.
 
 import Foundation
+
+protocol AnalyticsAPI {
+  func sendReport(report: Report)
+}
+
+protocol ReportSending: AnyObject {
+  var analytics: AnalyticsAPI? { get set }
+}

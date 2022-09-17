@@ -30,4 +30,30 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import MyBiz
+
+class MockSender: RequestSender {
+  var lastSent: Decodable?
+
+  func send<T: Decodable>(
+    request: URLRequest,
+    success: ((T) -> Void)?,
+    failure: ((Error) -> Void)?
+  ) {
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+
+    do {
+      let obj = try decoder.decode(
+        T.self,
+        from: request.httpBody!)
+      lastSent = obj
+      success?(obj)
+    } catch {
+      print("error decoding a \(T.self): \(error)")
+      failure?(error)
+    }
+  }
+}
+

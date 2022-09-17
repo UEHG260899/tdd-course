@@ -35,12 +35,21 @@ import Login
 import UIHelpers
 
 let userLoggedInNotification =
-  Notification.Name("user logged in")
+Notification.Name("user logged in")
 let userLoggedOutNotification =
-  Notification.Name("user logged out")
+Notification.Name("user logged out")
 
 enum UserNotificationKey: String {
   case userId
+}
+
+protocol RequestSender {
+  func send<T: Decodable>(
+    request: URLRequest,
+    success: ((T) -> Void)?,
+    failure: ((Error) -> Void)?
+  )
+  
 }
 
 protocol APIDelegate: AnyObject {
@@ -61,15 +70,16 @@ protocol APIDelegate: AnyObject {
 class API: LoginAPI {
   let server: String
   let session: URLSession
-
+  
   weak var delegate: APIDelegate?
   var token: Token?
-
+  lazy var sender: RequestSender = self
+  
   init(server: String) {
     self.server = server
     session = URLSession(configuration: .default)
   }
-
+  
   func login(
     username: String,
     password: String,
@@ -107,10 +117,10 @@ class API: LoginAPI {
         }
       }
     }
-
+    
     task.resume()
   }
-
+  
   func handleToken(
     token: Token,
     completion: @escaping (Result<String, Error>) -> Void
@@ -128,14 +138,14 @@ class API: LoginAPI {
       completion(.success(token.user.id.uuidString))
     }
   }
-
+  
   func logout() {
     token = nil
     delegate = nil
     let note = Notification(name: userLoggedOutNotification)
     NotificationCenter.default.post(note)
   }
-
+  
   //swiftlint:disable identifier_name
   func submitPO(po: PurchaseOrder) throws {
     let url = URL(string: server + "api/" + "purchases")!
@@ -146,7 +156,7 @@ class API: LoginAPI {
     }
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpMethod = "POST"
-
+    
     let coder = JSONEncoder()
     coder.dateEncodingStrategy = .iso8601
     let data = try coder.encode(po)
@@ -157,11 +167,11 @@ class API: LoginAPI {
       failure: self.delegate?.purchasesFailed(error:))
     task.resume()
   }
-
+  
   private func poSuccess(po: PurchaseOrder) {
     getPurchases()
   }
-
+  
   private func request(_ endpoint: String) -> URLRequest {
     let url = URL(string: server + "api/" + endpoint)!
     var request = URLRequest(url: url)
@@ -171,7 +181,7 @@ class API: LoginAPI {
     }
     return request
   }
-
+  
   func loadTask<T: Decodable>(
     request: URLRequest,
     success: ((T) -> Void)?,
@@ -206,7 +216,7 @@ class API: LoginAPI {
       }
     }
   }
-
+  
   func getAnnouncements() {
     let req = request("announcements")
     let task = loadTask(
@@ -215,7 +225,7 @@ class API: LoginAPI {
       failure: self.delegate?.announcementsFailed(error:))
     task.resume()
   }
-
+  
   func getOrgChart() {
     let req = request("employees")
     let task = loadTask(
@@ -224,7 +234,7 @@ class API: LoginAPI {
       failure: self.delegate?.orgFailed(error:))
     task.resume()
   }
-
+  
   func getEvents() {
     let req = request("events")
     let task = loadTask(
@@ -233,7 +243,7 @@ class API: LoginAPI {
       failure: self.delegate?.eventsFailed(error:))
     task.resume()
   }
-
+  
   func getProducts() {
     let req = request("products")
     let task = loadTask(
@@ -242,7 +252,7 @@ class API: LoginAPI {
       failure: self.delegate?.productsFailed(error:))
     task.resume()
   }
-
+  
   func getPurchases() {
     let req = request("purchases")
     let task = loadTask(
@@ -251,7 +261,7 @@ class API: LoginAPI {
       failure: self.delegate?.purchasesFailed(error:))
     task.resume()
   }
-
+  
   func getUserInfo(userID: String) {
     let req = request("users/\(userID)")
     let task = loadTask(
@@ -260,4 +270,13 @@ class API: LoginAPI {
       failure: self.delegate?.userFailed(error:))
     task.resume()
   }
+}
+
+extension API: RequestSender {
+  func send<T>(request: URLRequest, success: ((T) -> Void)?, failure: ((Error) -> Void)?) where T : Decodable {
+    let task = loadTask(request: request, success: success, failure: failure)
+    task.resume()
+  }
+  
+  
 }

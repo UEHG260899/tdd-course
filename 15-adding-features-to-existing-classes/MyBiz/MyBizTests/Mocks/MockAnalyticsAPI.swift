@@ -31,3 +31,14 @@
 /// THE SOFTWARE.
 
 import Foundation
+@testable import MyBiz
+
+class MockAnalyticsAPI: AnalyticsAPI {
+  var reportSent = false
+  var reportCount = 0
+
+  func sendReport(report: Report) {
+    reportSent = true
+    reportCount += 1
+  }
+}
